@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Private Access 🤍</title>
+
+<style>
+body{
+margin:0;
+font-family:'Segoe UI',sans-serif;
+background:linear-gradient(135deg,#ffe6f0,#fff5f8);
+text-align:center;
+overflow-x:hidden;
+}
+
+.container{
+padding:40px 20px;
+margin-top:70px;
+}
+
+input, textarea{
+padding:12px;
+border-radius:20px;
+border:1px solid #ccc;
+width:80%;
+font-size:16px;
+margin-top:10px;
+}
+
+button{
+padding:12px 22px;
+border:none;
+border-radius:25px;
+font-size:16px;
+margin:15px 10px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.yes{background:#ff4d88;color:white;}
+.no{background:#ddd;}
+
+.hidden{display:none;}
+
+img{
+width:80%;
+max-width:300px;
+margin:10px 0;
+border-radius:15px;
+box-shadow:0 4px 12px rgba(0,0,0,0.2);
+}
+
+.final{
+font-size:20px;
+color:#444;
+margin-top:40px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- PASSWORD PAGE -->
+<div class="container" id="loginPage">
+<h2>🔐 Private Access</h2>
+<p>Enter the secret code:</p>
+<input type="password" id="passwordInput" placeholder="Hint: If I message kkrh and u r gussa">
+<br>
+<button onclick="checkPassword()">Unlock 🤍</button>
+<p id="error" style="color:red;"></p>
+</div>
+
+<!-- MAIN PAGE -->
+<div class="container hidden" id="mainPage">
+
+<h2>I hope yaha pe to Gorgeous/shaandaar/Dilkash bol skta hu 😂</h2>
+
+<p>So… will you be my Valentine?</p>
+
+<button class="yes" onclick="showSurprise()">YES 💖</button>
+<button class="no" onclick="moveButton(this)">NO 😶</button>
+
+</div>
+
+<!-- SURPRISE PAGE -->
+<div class="container hidden" id="page2">
+
+<h2>Kuch pics jo muje acche lagte hai, tujhe nhi lgte to bhi dekhne pdege 🤍</h2>
+
+<img src="photo1.jpg">
+
+<h4>Ek sher pesh hai....Irshaad</h4>
+
+<p>
+Is jahaan mein patthar dil ko bhi koi phool sa tod deta hai,<br>
+Aur shaandaar kehne par bhi koi inkaar kr deta hai,<br>
+Ab aur kya likhun tumhari tareef mein,<br>
+Lafzon ka daaman bhi kahin na kahin chhota pad jaata hai.<br>
+Waise to har rang khoob jachta hai tumpr magar,<br>
+Safed rang mein tum qayamat lagti ho.<br>
+Aur tumhe shayad andaaza bhi na tha,<br>
+Ke tumse meri mulaaqaat honi hai…<br>
+Isi liye khuda ne ye jahaan itni fursat se sajaya hai. 🤍
+</p>
+
+<br><br>
+
+<p>
+Toh ek arz hai…<br>
+Agar ijazat ho,<br>
+Toh iss haseen si kahaani ko ek<br>
+khoobsurat shaam tak le chalte hain.
+</p>
+
+<h2>Kaha chalna pasand krogi, pls suggest:</h2>
+
+<form id="dateForm">
+
+<textarea name="Suggestion" rows="3" placeholder="Type here..." required></textarea>
+<br>
+
+<button class="yes" type="submit">Send 🤍</button>
+
+</form>
+
+</div>
+
+<!-- FINAL PAGE -->
+<div class="container hidden" id="finalPage">
+<p class="final">
+Thanks for visiting my website 🤍<br><br>
+Your response has been recorded.<br>
+Will get back to you soon 😌<br>
+Location baad mai btaya jayega.<br>
+----Akash
+</p>
+</div>
+
+<script>
+
+function checkPassword(){
+var password=document.getElementById("passwordInput").value;
+
+if(password==="Nhi btaungi"){
+document.getElementById("loginPage").classList.add("hidden");
+document.getElementById("mainPage").classList.remove("hidden");
+}else{
+document.getElementById("error").innerText="Wrong code‼️ Pls try again do not exit ‼️";
+}
+}
+
+function showSurprise(){
+document.getElementById("mainPage").classList.add("hidden");
+document.getElementById("page2").classList.remove("hidden");
+}
+
+function moveButton(btn){
+btn.style.position="absolute";
+btn.style.top=Math.random()*400+"px";
+btn.style.left=Math.random()*300+"px";
+}
+
+/* EMAIL SUBMISSION */
+document.getElementById("dateForm").addEventListener("submit", function(e){
+e.preventDefault();
+
+var formData = new FormData(this);
+formData.append("_captcha", "false");
+formData.append("_subject", "New Suggestions");
+
+fetch("https://formsubmit.co/akashchaute@gmail.com", {
+method: "POST",
+body: formData
+})
+.then(response => {
+document.getElementById("page2").classList.add("hidden");
+document.getElementById("finalPage").classList.remove("hidden");
+})
+.catch(error => {
+alert("Something went wrong 😢 Try again.");
+});
+});
+
+</script>
+
+</body>
+</html>
